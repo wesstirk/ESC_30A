@@ -1,15 +1,26 @@
+/*
+ * Created February 2, 2019 by Wesley Stirk
+ * 
+ * Created for the purpose of using the ESC_30A class to control a bldc motor
+ * Assumes that there is a serial connection to the arduino that commands can be sent over. 
+ * Kind of like a terminal to control the motor. 
+ * 
+ * Last updated February 15, 2019 by Wesley Stirk
+ */
+
 #include "ESC_30A.h"
 
 #define CONTROL_PIN 9
 #define BAUD_RATE 9600
 
+//#define USE_CONTROL //comment out to use another sketch. Put in to use this one.
+#ifdef USE_CONTROL //a bit of a hack to allow multiple sketches in the same project. 
 
 
  ESC_30A motor(CONTROL_PIN);
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(BAUD_RATE);
-  //motor.full_stop(); //start off slow
   motor.init();
 
 }
@@ -59,3 +70,5 @@ bool isStringNumeric(String msg)
 
   return true;
 }
+
+#endif
