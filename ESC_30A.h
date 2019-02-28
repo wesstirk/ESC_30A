@@ -4,7 +4,7 @@
  * This class has the basic members and functions needed to control the 30A BLDC ESC from Hobbypower
  * It relies heavily on the Servo library for much of its functionality. 
  * 
- * Last Updated February 15, 2019 by Wesley Stirk
+ * Last Updated February 27, 2019 by Wesley Stirk
  */
 
 #ifndef BLDC_ESC_30A
@@ -18,7 +18,7 @@ typedef uint8_t speed_t; //used for recording the speed
 
 //defines for use by others
 
-//#define ESC_DEBUG //uncomment to see debug messages
+#define ESC_DEBUG //uncomment to see debug messages
 #define ESC_MSG //uncomment to see messages
 
 #define ESC_30A_MAX_SPEED 100 
@@ -96,6 +96,12 @@ class ESC_30A
       * over the pulse width
       */
       void throttle_pulse(uint16_t pulseWidth);
+
+      /*
+       * Causes a delay for the proper amount of time to allow the ESC to go through it's start up routine. 
+       * Useful for when programs will be starting automatically, without human input. 
+       */
+      void wait_startup();
 
   private:
     speed_t currentSpeed; //keeps track of the current speed of the motor

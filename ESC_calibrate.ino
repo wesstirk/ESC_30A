@@ -12,7 +12,7 @@
 #define BAUDRATE 9600
 #define CONTROL_PIN 9
 
-#define USE_CALIBRATE
+//#define USE_CALIBRATE
 #ifdef USE_CALIBRATE
 
 void setup()

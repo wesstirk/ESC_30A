@@ -4,7 +4,7 @@
  * This file has the implementation of the basic members and functions needed to control the 30A BLDC ESC from Hobbypower
  * It relies heavily on the Servo library for much of its functionality. 
  * s
- * Last Updated February 15, 2019 by Wesley Stirk
+ * Last Updated February 27, 2019 by Wesley Stirk
  */
 
 #include "ESC_30A.h"
@@ -29,11 +29,14 @@ void ESC_30A::throttle(speed_t mSpeed)
 {
   if(mSpeed <= ESC_30A_MAX_SPEED || mSpeed >= ESC_30A_MIN_SPEED) //double check that the given speed in the appropriate ranged
   {
-    uint8_t rate = map(mSpeed, ESC_30A_MIN_SPEED, ESC_30A_MAX_SPEED, 0, 180); //servos go from 0 to 180 so it needs to be mapped to that range.
+    uint16_t rate = map(mSpeed, ESC_30A_MIN_SPEED, ESC_30A_MAX_SPEED, 0, 1000) + 1000;
+    //map(mSpeed, ESC_30A_MIN_SPEED, ESC_30A_MAX_SPEED, 0, 180); //servos go from 0 to 180 so it needs to be mapped to that range.
     #ifdef ESC_DEBUG
-      Serial.println("throttling to: ", rate);
+      Serial.print("throttling to: ");
+      Serial.println(rate);
     #endif
-    bldc.write(rate); //set the appropriate speed
+    //bldc.write(rate); //set the appropriate speed
+    throttle_pulse(rate);
     currentSpeed = mSpeed; //remember what speed we are at. 
   }
 }
@@ -93,4 +96,9 @@ void ESC_30A::calibrate()
     Serial.println("ESC_30A Calibrated!");
   #endif
     
+}
+
+void ESC_30A::wait_startup()
+{
+  delay(STARTUP_TIME); //just wait. Nothing else. 
 }
