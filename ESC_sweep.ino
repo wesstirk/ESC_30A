@@ -3,7 +3,7 @@
  * 
  * This program is for running a basic demo of a motor spinning on a continuous loop. 
  * 
- * Last updated February 27, 2019 by Wesley Stirk
+ * Last updated March 18, 2019 by Wesley Stirk
  */
 
 //#define USE_SWEEP
@@ -31,7 +31,7 @@ void loop()
     delay(DELAY_TIME); //wait a little bit before moving on. 
   }
 
-  for(int8_t i = ESC_30A_MAX_SPEED; i >= ESC_30A_MIN_SPEED ; ++i) //throttle down. 
+  for(int8_t i = ESC_30A_MAX_SPEED; i >= ESC_30A_MIN_SPEED ; --i) //throttle down. 
   {
     motor.throttle(i);
     delay(DELAY_TIME);
