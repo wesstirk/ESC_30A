@@ -6,7 +6,7 @@
  * Last updated February 27, 2019 by Wesley Stirk
  */
 
-#define USE_SWEEP
+//#define USE_SWEEP
 #ifdef  USE_SWEEP
 
 #include "ESC_30A.h"

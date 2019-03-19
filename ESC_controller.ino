@@ -13,7 +13,7 @@
 #define CONTROL_PIN 9
 #define BAUD_RATE 9600
 
-//#define USE_CONTROL //comment out to use another sketch. Put in to use this one.
+#define USE_CONTROL //comment out to use another sketch. Put in to use this one.
 #ifdef USE_CONTROL //a bit of a hack to allow multiple sketches in the same project. 
 
 
