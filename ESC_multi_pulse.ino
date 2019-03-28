@@ -8,7 +8,7 @@
 #include "ESC_30A.h"
 
 
-#define ESC_MULTI_PULSE //comment out to use another sketch. 
+//#define ESC_MULTI_PULSE //comment out to use another sketch. 
 #ifdef ESC_MULTI_PULSE
 
 #define CONTROL_PIN 9 //where the arduino connects to the ESC. Must be a PWM pin. 
